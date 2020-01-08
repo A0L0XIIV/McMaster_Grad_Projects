@@ -1,0 +1,30 @@
+.Register {
+  margin: 20px auto;
+  width: 80%;
+  text-align: center;
+}
+
+form {
+  background-color: #f4f4f4;
+}
+
+.ResultContainer {
+  text-align: center;
+  font-weight: bold;
+}
+
+/*Desktop Only*/
+@media (max-width: 500px) {
+  .Register {
+    width: 100%;
+  }
+
+  .DesktopOnly {
+    display: none;
+  }
+
+  /*Make wider input fields when hover*/
+  .formField:hover > label {
+    display: none;
+  }
+}

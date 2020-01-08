@@ -1,0 +1,125 @@
+/* --- Review List --- */
+/*UL w/ no dots and margin-padding sizes*/
+.parkData ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+/*Extra space between reviews*/
+.parkData li {
+  padding-bottom: 2em;
+}
+/* --- Review List --- */
+
+/* --- Park map & images --- */
+/*Map image size*/
+#map {
+  width: 100%;
+  height: 23vw;
+  float: left;
+}
+
+/*Park image size*/
+#parkImage {
+  width: 100%;
+  height: auto;
+  float: right;
+}
+
+/*Carousel hover for open modal*/
+#parkImageCarousel .carousel-item:hover {
+  opacity: 0.75;
+}
+/* --- Park map & images --- */
+
+/* --- Park video --- */
+/*Video size*/
+video {
+  width: 50%;
+  height: 100%;
+}
+/* --- Park video --- */
+
+/* --- Add a new review --- */
+textarea {
+  border-radius: 10px;
+  border: solid 1px #000000;
+  font-size: 1.2rem;
+}
+/* --- Add a new review --- */
+
+/* --- User reviews --- */
+/*Main div for username and rating*/
+.reviewUsernameAndRating {
+  display: inline-block;
+  width: 90%;
+  margin: 0 auto;
+}
+
+/*Username left side alignment*/
+.reviewUsername {
+  float: left;
+}
+
+/*Rating right side alignment*/
+.reviewUserRating {
+  float: right;
+}
+
+/*Review size and text-decoration*/
+.userReview {
+  width: 90%;
+  margin: 0 auto;
+  text-align: justify;
+}
+
+/*Centered review div*/
+.reviewDiv {
+  margin: 0 auto;
+}
+/* --- User reviews --- */
+
+/* ----- SCREEN SIZE BASED OPERATIONS  ----- */
+
+/* Mobile Devices */
+@media only screen and (max-width: 575px) {
+  /*Map height adjusment*/
+  #map {
+    height: 67vw;
+  }
+
+  /*Video size*/
+  video {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* Tablets */
+@media only screen and (min-width: 576px) and (max-width: 991px) {
+  /*Map height adjusment*/
+  #map {
+    height: 33vw;
+  }
+
+  /*Video size*/
+  video {
+    width: 70%;
+    height: 100%;
+  }
+}
+
+/* Lower Res Desktop - HD*/
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  /*Map height adjusment*/
+  #map {
+    height: 29vw;
+  }
+
+  /*Video size*/
+  video {
+    width: 60%;
+    height: 100%;
+  }
+}

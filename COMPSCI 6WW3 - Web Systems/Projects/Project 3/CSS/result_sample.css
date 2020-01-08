@@ -1,0 +1,76 @@
+/* --- Map and description  --- */
+/*Map  size*/
+.map {
+  margin: auto;
+  width: 100%;
+  min-height: 12vw;
+  height: 100%;
+}
+
+/*Map Results size*/
+#mapResultsMap {
+  margin: auto;
+  margin-top: 1em;
+  width: 90%;
+  min-height: 50vw;
+  height: 100%;
+}
+/* --- Map and description  --- */
+
+h2 {
+  color: #ffffff;
+  background-color: rgb(5, 155, 5);
+}
+
+/* ----- SCREEN SIZE BASED OPERATIONS  ----- */
+
+/* Mobile Devices */
+@media only screen and (max-width: 575px) {
+  /*Map  size*/
+  .map {
+    min-height: 60vw;
+  }
+  /*Map Results size*/
+  #mapResultsMap {
+    width: 95%;
+    min-height: 120vw;
+  }
+}
+/* Tablet Phones */
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  /*Map  size*/
+  .map {
+    min-height: 50vw;
+  }
+  /*Map Results size*/
+  #mapResultsMap {
+    width: 95%;
+    min-height: 120vw;
+  }
+}
+
+/* Tablets */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  /*Map  size*/
+  .map {
+    min-height: 20vw;
+  }
+  /*Map Results size*/
+  #mapResultsMap {
+    width: 95%;
+    min-height: 100vw;
+  }
+}
+
+/* Lower Res Desktop - HD*/
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  /*Map  size*/
+  .map {
+    min-height: 18vw;
+  }
+  /*Map Results size*/
+  #mapResultsMap {
+    width: 95%;
+    min-height: 80vw;
+  }
+}
