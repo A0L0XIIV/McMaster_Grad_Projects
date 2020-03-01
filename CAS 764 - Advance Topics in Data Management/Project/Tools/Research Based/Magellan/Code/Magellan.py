@@ -6,8 +6,11 @@ import warnings
 warnings.filterwarnings("ignore")
 
 # Pandas setting for showing full table, all columns (without this most of them are hidden)
-pd.options.display.max_columns = None
-pd.options.display.max_rows = None
+#pd.options.display.max_columns = None
+#pd.options.display.max_rows = None
+pd.set_option('display.max_rows', 500)
+pd.set_option('display.max_columns', 500)
+pd.set_option('display.width', 1000)
 
 # WELCOME TO MY MAGELLAN RUN SCRIPT
 print("\n-------------WELCOME TO MY MAGELLAN RUN SCRIPT-------------\n")
@@ -112,25 +115,30 @@ if (is_blocking == 'y'):
     if(is_same_col == 'y'):
         C_attr_eq = []  # Attr Equ blocker result list
         C_overlap = []  # Overlap blocker result list
+
+        # Left and right table attribute prefixes
+        l_prefix = "l_"
+        r_prefix = "r_"
+
+        print("\n- List of columns: ")
+        print(list(A.columns))
+        # Labeling output table column selection
+        print("\n- Enter the indexes of columns that you want to see in labeling table (0-" + str(
+            len(A.columns) - 1) + "):")
+        out_attr = []
+        for i in range(1, len(A.columns)):
+            print("- Finish with empty character(enter+enter) " + str(i))
+            add_to_attr = input()
+            if (add_to_attr == ''):
+                break
+            # Get indexes from user and add columns into out_attr list
+            out_attr.append(A.columns[int(add_to_attr)])
+
+        # Print output attributes
+        print(out_attr)
+
         # Loop for adding/combining new blockers
         while(True):
-            print("- List of columns: ")
-            print(list(A.columns))
-            # Debug output table column selection
-            print("- Enter the indexes of columns that you want to see in debug table (0-" + str(
-                len(A.columns) - 1) + "):")
-            out_attr = []
-            for i in range(1, len(A.columns)):
-                print("- Finish with empty character(enter+enter) " + str(i))
-                add_to_attr = input()
-                if (add_to_attr == ''):
-                    break
-                # Get indexes from user and add columns into out_attr list
-                out_attr.append(A.columns[int(add_to_attr)])
-
-            # Print output attributes
-            print(out_attr)
-
             # Blocker selection
             print("\n- Do yo want to use Attribute Equivalence[ab] (same) or Overlap[ob] (similar) blocker (0-1):")
             blocker_selection = input()
@@ -145,10 +153,10 @@ if (is_blocking == 'y'):
                 # Loop for adding more columns/attributes into Attr Equ blocker
                 while(True):
                     # List column names
-                    print("- List of columns: ")
+                    print("\n- List of columns: ")
                     print(list(A.columns))
                     # Get blocking attribute/column
-                    print("- Which column (w/ index) to use for equivalence blocking? (ex. 1):")
+                    print("\n- Which column (w/ index) to use for equivalence blocking? (ex. 1):")
                     blocking_col_index = input()
                     blocking_col = A.columns[int(blocking_col_index)]
 
@@ -165,8 +173,8 @@ if (is_blocking == 'y'):
                         C_attr_eq.append(ab.block_tables(A, B, blocking_col, blocking_col,
                                                          l_output_attrs=out_attr,
                                                          r_output_attrs=out_attr,
-                                                         l_output_prefix='l_',
-                                                         r_output_prefix='r_',
+                                                         l_output_prefix=l_prefix,
+                                                         r_output_prefix=r_prefix,
                                                          allow_missing=add_missing_val,
                                                          n_jobs=-1)
                                          )
@@ -184,7 +192,7 @@ if (is_blocking == 'y'):
                     # DEBUG BLOCKING
                     print("\n- Attribute Equivalence Blocker Debugging...\n")
                     # Debug last blocker output
-                    dbg = em.debug_blocker(C_attr_eq[-1], A, B, output_size=200)
+                    dbg = em.debug_blocker(C_attr_eq[-1], A, B, output_size=200, n_jobs=-1)
 
                     # Display first few tuple pairs from the debug_blocker's output
                     print("\n- Blocking debug results:")
@@ -226,6 +234,7 @@ if (is_blocking == 'y'):
 
                     print("\n- Enter the overlap size (# of tokens that overlap):")
                     overlap_size = input()
+                    overlap_size = int(overlap_size)
 
                     print("\n- Do you want to remove (a, an, the) from token set? (y or n):")
                     use_stop_words = input()
@@ -240,8 +249,8 @@ if (is_blocking == 'y'):
                         C_overlap.append(ob.block_tables(A, B, blocking_col, blocking_col,
                                                          l_output_attrs=out_attr,
                                                          r_output_attrs=out_attr,
-                                                         l_output_prefix='l_',
-                                                         r_output_prefix='r_',
+                                                         l_output_prefix=l_prefix,
+                                                         r_output_prefix=r_prefix,
                                                          rem_stop_words=use_stop_words,
                                                          overlap_size=overlap_size,
                                                          allow_missing=add_missing_val,
@@ -263,7 +272,7 @@ if (is_blocking == 'y'):
                     # DEBUG BLOCKING
                     print("\n- Overlap Blocker Debugging...\n")
                     # Debug last blocker output
-                    dbg = em.debug_blocker(C_overlap[-1], A, B, output_size=200)
+                    dbg = em.debug_blocker(C_overlap[-1], A, B, output_size=200, n_jobs=-1)
 
                     # Display first few tuple pairs from the debug_blocker's output
                     print("\n- Blocking debug results:")
@@ -359,9 +368,9 @@ print("\n- Feature table first rows:")
 # Display first few rows
 print(H.head())
 
-# Primary key of tables
-ltable_pk = "ltable_" + pk_A
-rtable_pk = "rtable_" + pk_B
+# Primary key of tables = prefix + pk = l_id, r_id
+ltable_pk = l_prefix + pk_A
+rtable_pk = r_prefix + pk_B
 
 # Check if the feature vectors contain missing values
 # A return value of True means that there are missing values
