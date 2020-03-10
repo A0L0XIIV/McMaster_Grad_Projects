@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Conference xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="ConferenceMetamodel" xmi:id="_5k3c0FD6Eeqk4axvbaqq6Q">
+  <timeslots xmi:id="_QBurcFD7Eeqk4axvbaqq6Q" date="2020-02-17T12:00:00.000-0500" duration="1">
+    <breaks xmi:id="_UGoEQFD7Eeqk4axvbaqq6Q" type="Lunch" breakRoom="_6kE3EFD6Eeqk4axvbaqq6Q"/>
+  </timeslots>
+  <timeslots xmi:id="_ErqyIFD7Eeqk4axvbaqq6Q" date="2020-02-17T13:00:00.000-0500" duration="2">
+    <tracks xmi:id="_XRSCYFD7Eeqk4axvbaqq6Q" name="Software" trackRoom="_6kE3EFD6Eeqk4axvbaqq6Q">
+      <talks xmi:id="_cZ7-QFD7Eeqk4axvbaqq6Q" name="Model Driven Engineering" date="2020-02-17T13:00:00.000-0500" duration="1" presenters="_AAQL4FD7Eeqk4axvbaqq6Q"/>
+      <talks xmi:id="_jmFb4FD7Eeqk4axvbaqq6Q" name="Algorithms" date="2020-02-17T14:00:00.000-0500" duration="1" presenters="_BoQrgFD7Eeqk4axvbaqq6Q _AAQL4FD7Eeqk4axvbaqq6Q"/>
+    </tracks>
+    <tracks xmi:id="_X5BX0FD7Eeqk4axvbaqq6Q" name="Hardware" trackRoom="_7KHjYFD6Eeqk4axvbaqq6Q">
+      <talks xmi:id="_sLcvMFD7Eeqk4axvbaqq6Q" name="CPU vs GPU" date="2020-02-17T14:00:00.000-0500" duration="1" presenters="_DVGAwFD7Eeqk4axvbaqq6Q"/>
+    </tracks>
+  </timeslots>
+  <timeslots xmi:id="_FhEwIFD7Eeqk4axvbaqq6Q" date="2020-02-17T15:00:00.000-0500" duration="1">
+    <breaks xmi:id="_Ns9zgFD7Eeqk4axvbaqq6Q" type="Coffee" breakRoom="_7KHjYFD6Eeqk4axvbaqq6Q"/>
+  </timeslots>
+  <rooms xmi:id="_6kE3EFD6Eeqk4axvbaqq6Q" location="Room A1" break="_UGoEQFD7Eeqk4axvbaqq6Q" track="_XRSCYFD7Eeqk4axvbaqq6Q"/>
+  <rooms xmi:id="_7KHjYFD6Eeqk4axvbaqq6Q" location="Room B1" break="_Ns9zgFD7Eeqk4axvbaqq6Q" track="_X5BX0FD7Eeqk4axvbaqq6Q"/>
+  <rooms xmi:id="_-l_0YFD6Eeqk4axvbaqq6Q" location="Room C1"/>
+  <speakers xmi:id="_AAQL4FD7Eeqk4axvbaqq6Q" name="Baran Kaya"/>
+  <speakers xmi:id="_BoQrgFD7Eeqk4axvbaqq6Q" name="John Smith"/>
+  <speakers xmi:id="_DVGAwFD7Eeqk4axvbaqq6Q" name="Mary Jane"/>
+</Conference>

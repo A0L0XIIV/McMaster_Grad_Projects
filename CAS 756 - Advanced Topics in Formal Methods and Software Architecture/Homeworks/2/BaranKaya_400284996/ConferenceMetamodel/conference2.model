@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Conference xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="ConferenceMetamodel" xmi:id="_ZB6FwE56Eeqrf5t4nl3BTQ" name="MDE Conference" day="2020-02-13T00:00:00.000-0500" hour="8" minute="0" duration="5">
+  <timeslots xmi:id="_a4_jME56Eeqrf5t4nl3BTQ" day="2020-02-13T00:00:00.000-0500" hour="13" minute="0" duration="1">
+    <breaks xmi:id="_eniRgE56Eeqrf5t4nl3BTQ" type="Coffee"/>
+    <breaks xmi:id="_fTXcwE56Eeqrf5t4nl3BTQ" type="Lunch"/>
+    <tracks xmi:id="_f8NlcE56Eeqrf5t4nl3BTQ" name="MDE">
+      <talkslots xmi:id="_tcmBQE56Eeqrf5t4nl3BTQ" day="2020-02-13T00:00:00.000-0500" hour="13" minute="0" duration="1">
+        <talk xmi:id="_vAbykE56Eeqrf5t4nl3BTQ" name="Model Driven Engineering">
+          <speakers xmi:id="_1ZUAME56Eeqrf5t4nl3BTQ" name="Baran Kaya"/>
+        </talk>
+      </talkslots>
+    </tracks>
+  </timeslots>
+</Conference>

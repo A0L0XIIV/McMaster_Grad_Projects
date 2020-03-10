@@ -1,0 +1,21 @@
+@namespace(uri="http://www.example.org/softwareDistribution", prefix="softwareDistribution")
+package softwareDistribution;
+
+abstract class NamedElement {
+  attr String name;
+}
+
+class Bundle extends NamedElement {
+  val Component[+] components;
+}
+
+// Constraint: Component require other components.
+class Component extends NamedElement {
+  ref Component[*] dependantComponent;
+  val JAR[+] jars;
+}
+
+// Constraint: Different component can use the same JAR file.
+class JAR extends NamedElement {
+}
+

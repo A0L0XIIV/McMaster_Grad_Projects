@@ -1,0 +1,70 @@
+/* I changed Ecore model and Emfatic file 4 times (iterations).
+* That's why I have 4 different model files.
+* Each model files' Ecore metamodels are different.
+* I also try to implement GMF into this metamodel but,
+* I couldn't figure out which node/link to use for metamodel classes.
+*/
+
+@namespace(uri="ConferenceMetamodel", prefix="")
+package ConferenceMetamodel;
+
+abstract class NamedElement{
+   attr String name;
+}
+
+abstract class TimedElement{
+   attr Date date;
+   attr Integer duration;
+}
+
+/* Constraint: TimeSlots' date must start after the Conference date.
+* Also, TimeSlots' date+duration cannot exceed the Conference's overall date+duration.
+*/
+//@gmf.diagram
+class Conference extends NamedElement, TimedElement{
+	val TimeSlot[1..*] timeslots;
+	val Room[1..*] rooms;
+	val Participant[1..*] speakers;
+}
+
+// Constraint: Timeslots must have either break or track but not both of them at the same time.
+//@gmf.link(target.decoration="arrow")
+class TimeSlot extends TimedElement{
+	val Break[*] breaks;
+	val Track[1..*] tracks;
+}
+
+//@gmf.node(label="name", figure="elipsis")
+class Room{
+	attr String location;
+	ref Break[*]#breakRoom break;
+	ref Track[*]#trackRoom track;
+}
+
+// Instead of type string, I could use NamedElement's attribute.
+//@gmf.node(label="type")
+class Break {
+	attr String type;
+	ref Room[1]#break breakRoom;
+}
+
+/* Instead of Talk values, I could use TalkSlots (inhereted from TimedElement) like TimeSlots.
+* Early iterations have TalkSlots but later I removed them.
+*/
+//@gmf.node(label="name", figure="rectangle")
+class Track extends NamedElement{
+	val Talk [1..*] talks;
+	ref Room[1]#track trackRoom;
+}
+
+/* Constraint: Talks' date must start after the Track date.
+* Also, Talks' date+duration cannot exceed the Track's overall date+duration.
+*/
+//@gmf.link(source="talks", target="presenters")
+class Talk extends NamedElement, TimedElement{
+	ref Participant[1..*] presenters;
+}
+
+//@gmf.node(label="name", figure="triangle")
+class Participant extends NamedElement{	
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="ResearchProject" xmi:id="_UCnUsFEAEeqk4axvbaqq6Q" name="Research" start="1" end="30" duration="30">
+  <partners xmi:id="_X4CuIFEAEeqk4axvbaqq6Q" name="York">
+    <efforts xmi:id="_oScrEFEAEeqk4axvbaqq6Q" PersonMonths="6" workpackage="_c4ABAFEAEeqk4axvbaqq6Q"/>
+  </partners>
+  <partners xmi:id="_YMLyIFEAEeqk4axvbaqq6Q" name="TOG">
+    <efforts xmi:id="_qNmwMFEAEeqk4axvbaqq6Q" PersonMonths="6" workpackage="_c4ABAFEAEeqk4axvbaqq6Q"/>
+  </partners>
+  <partners xmi:id="_Yj3SUFEAEeqk4axvbaqq6Q" name="McMaster"/>
+  <workpackages xmi:id="_c4ABAFEAEeqk4axvbaqq6Q" name="1-Requirements and Use Cases" start="1" end="6" duration="6" packageEffort="_oScrEFEAEeqk4axvbaqq6Q _qNmwMFEAEeqk4axvbaqq6Q">
+    <deliverables xmi:id="_sc22AFEAEeqk4axvbaqq6Q" name="1.1-Project Requirements"/>
+    <deliverables xmi:id="_tFVyUFEAEeqk4axvbaqq6Q" name="1.2-Evaluation Plan"/>
+    <tasks xmi:id="_th_5IFEAEeqk4axvbaqq6Q" name="1.1-T1" start="1" end="6" duration="6"/>
+    <tasks xmi:id="_tz3sQFEAEeqk4axvbaqq6Q" name="1.2-T2" start="3" end="6" duration="4"/>
+    <tasks xmi:id="_uIqQgFEAEeqk4axvbaqq6Q" name="1.3-T3" start="4" end="6" duration="3"/>
+  </workpackages>
+  <workpackages xmi:id="_jQLEAFEAEeqk4axvbaqq6Q" name="3-Source Code Quality and Activity Analysis" start="1" end="24" duration="24">
+    <deliverables xmi:id="_3If5UFEAEeqk4axvbaqq6Q" name="2.1-Evaluation Plan"/>
+    <tasks xmi:id="_4Abm4FEAEeqk4axvbaqq6Q" name="2.1-T1" start="1" end="6" duration="6"/>
+    <tasks xmi:id="_4X3PcFEAEeqk4axvbaqq6Q" name="2.2-T2" start="7" end="12" duration="6"/>
+    <tasks xmi:id="_414oMFEAEeqk4axvbaqq6Q" name="2.3-T3" start="13" end="18" duration="6"/>
+    <tasks xmi:id="_5KY4kFEAEeqk4axvbaqq6Q" name="2.4-T4" start="19" end="24" duration="6"/>
+  </workpackages>
+  <workpackages xmi:id="_joLUUFEAEeqk4axvbaqq6Q" name="2-Domain Modeling and OSS Project Lifecycle" start="1" end="24" duration="24"/>
+</Project>

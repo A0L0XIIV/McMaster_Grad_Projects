@@ -1,0 +1,44 @@
+@namespace(uri="ResearchProject", prefix="")
+package ResearchProject;
+
+abstract class NamedElement{
+   attr String name;
+}
+
+abstract class TimedElement{
+   attr Integer start;
+   attr Integer end;
+   attr Integer duration;
+}
+
+class Project extends NamedElement, TimedElement{
+	val Partner[1..*] partners;
+	val Workpackage[1..*] workpackages;
+}
+
+class Partner extends NamedElement{
+	val Effort[1..*] efforts;
+}
+
+// Constraint: Each effort must refer to different workpackages
+class Effort{
+	attr Integer PersonMonths;
+	ref Workpackage[1]#packageEffort workpackage;
+}
+
+/* Constraint: Workpackages' start-end date must be in Project's start-end date
+* Constraint: Tasks and Deliverables total duration cannot exceed the Workpackage's duraiton
+*/
+class Workpackage extends NamedElement, TimedElement{
+	ref Effort[1..*]#workpackage packageEffort;
+	val Deliverable[1..*] deliverables;
+	val Task[1..*] tasks;
+}
+
+// Constraint: Tasks' start-end date must be in Workpackage's start-end date
+class Task extends NamedElement, TimedElement {
+}
+
+// Constraint: Deliverables' start-end date must be in Workpackage's start-end date
+class Deliverable extends NamedElement, TimedElement {
+}

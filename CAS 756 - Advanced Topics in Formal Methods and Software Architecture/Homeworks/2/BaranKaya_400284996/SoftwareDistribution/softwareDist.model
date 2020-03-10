@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ASCII"?>
+<softwareDistribution:Bundle xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:softwareDistribution="http://www.example.org/softwareDistribution" xmi:id="_js9bsFQ3EeqB1drFpFviKQ" name="Sole Trader">
+  <components xmi:id="_kuQgoFQ3EeqB1drFpFviKQ" name="Core">
+    <jars xmi:id="_xcZnMFQ3EeqB1drFpFviKQ" name="Analysis"/>
+  </components>
+  <components xmi:id="_lMvzcFQ3EeqB1drFpFviKQ" name="Sales">
+    <jars xmi:id="_zP0FkFQ3EeqB1drFpFviKQ" name="Main"/>
+  </components>
+  <components xmi:id="_ljsT0FQ3EeqB1drFpFviKQ" name="CRM">
+    <jars xmi:id="_026mQFQ3EeqB1drFpFviKQ" name="Add"/>
+  </components>
+  <components xmi:id="_wFcbUFQ3EeqB1drFpFviKQ" name="Data">
+    <jars xmi:id="_10MG0FQ3EeqB1drFpFviKQ" name="Analysis"/>
+  </components>
+</softwareDistribution:Bundle>

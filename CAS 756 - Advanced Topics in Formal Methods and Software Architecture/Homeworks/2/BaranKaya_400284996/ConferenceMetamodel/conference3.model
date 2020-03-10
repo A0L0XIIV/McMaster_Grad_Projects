@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Conference xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="ConferenceMetamodel" xmi:id="_uOlXgE59Eeqrf5t4nl3BTQ">
+  <timeslots xmi:id="_vzsUIE59Eeqrf5t4nl3BTQ" date="2020-02-13T13:00:00.000-0500" duration="2" slotsroom="_vRsaUE59Eeqrf5t4nl3BTQ">
+    <tracks xmi:id="_-36hQE59Eeqrf5t4nl3BTQ">
+      <talkslots xmi:id="_AY82ME5-Eeqrf5t4nl3BTQ" date="2020-02-13T13:00:00.000-0500" duration="1">
+        <talk xmi:id="_IMtGYE5-Eeqrf5t4nl3BTQ" name="MDE 101">
+          <speakers xmi:id="_NIE0ME5-Eeqrf5t4nl3BTQ" name="Baran Kaya"/>
+        </talk>
+      </talkslots>
+      <talkslots xmi:id="_BXwAwE5-Eeqrf5t4nl3BTQ" date="2020-02-13T14:00:00.000-0500" duration="1">
+        <talk xmi:id="_KSgVQE5-Eeqrf5t4nl3BTQ" name="MDE 102">
+          <speakers xmi:id="_NvDUoE5-Eeqrf5t4nl3BTQ" name="John Smith"/>
+        </talk>
+      </talkslots>
+    </tracks>
+  </timeslots>
+  <timeslots xmi:id="_B1Y_AE5-Eeqrf5t4nl3BTQ" date="2020-02-13T15:00:00.000-0500" duration="1">
+    <breaks xmi:id="_QVH_AE5-Eeqrf5t4nl3BTQ" type="Coffee"/>
+  </timeslots>
+  <rooms xmi:id="_vRsaUE59Eeqrf5t4nl3BTQ" location="Room A" roomschedule="_vzsUIE59Eeqrf5t4nl3BTQ"/>
+  <rooms xmi:id="_ye2S0E59Eeqrf5t4nl3BTQ" location="Room B"/>
+</Conference>

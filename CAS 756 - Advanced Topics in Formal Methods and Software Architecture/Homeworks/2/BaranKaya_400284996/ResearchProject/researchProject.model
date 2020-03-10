@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="ResearchProject" xmi:id="_aZgFoFD9Eeqk4axvbaqq6Q">
+  <partners xmi:id="_cS6eUFD9Eeqk4axvbaqq6Q" name="York"/>
+  <partners xmi:id="_cwnG8FD9Eeqk4axvbaqq6Q" name="McMaster"/>
+  <partners xmi:id="_dHsKMFD9Eeqk4axvbaqq6Q" name="TOG"/>
+  <workpackages xmi:id="_gJMMUFD9Eeqk4axvbaqq6Q" name="1-Requirements and Use Cases" start="1" end="6" duration="6">
+    <deliverables xmi:id="_uMGGYFD9Eeqk4axvbaqq6Q" name="1.1-Project Requirements"/>
+    <deliverables xmi:id="_x7uZ0FD9Eeqk4axvbaqq6Q" name="1.2-Evaluation Plan"/>
+    <tasks xmi:id="_0SxJsFD9Eeqk4axvbaqq6Q" name="1.1-T1" start="1" end="6" duration="6"/>
+    <tasks xmi:id="_0njt8FD9Eeqk4axvbaqq6Q" name="1.2-T2" start="3" end="6" duration="4"/>
+    <tasks xmi:id="_1BX8IFD9Eeqk4axvbaqq6Q" name="1.3-T3" start="4" end="6" duration="3"/>
+  </workpackages>
+  <workpackages xmi:id="_j9TXIFD9Eeqk4axvbaqq6Q" name="2-Domain Modeling and OSS Project Lifecycle" start="1" end="24" duration="24">
+    <deliverables xmi:id="_GjpgEFD-Eeqk4axvbaqq6Q" name="2.1-Evaluation Plan"/>
+    <tasks xmi:id="_IxDLwFD-Eeqk4axvbaqq6Q" name="2.1-T1" start="1" end="6" duration="6"/>
+    <tasks xmi:id="_JE7KAFD-Eeqk4axvbaqq6Q" name="2.2-T2" start="7" end="12" duration="6"/>
+    <tasks xmi:id="_JVvNMFD-Eeqk4axvbaqq6Q" name="2.3-T3" start="13" end="18" duration="6"/>
+    <tasks xmi:id="_JncoQFD-Eeqk4axvbaqq6Q" name="2.4-T4" start="19" end="24" duration="6"/>
+  </workpackages>
+  <workpackages xmi:id="__f5wgFD9Eeqk4axvbaqq6Q" name="3-Source Code Quality and Activity Analysis" start="1" end="24" duration="24"/>
+</Project>
