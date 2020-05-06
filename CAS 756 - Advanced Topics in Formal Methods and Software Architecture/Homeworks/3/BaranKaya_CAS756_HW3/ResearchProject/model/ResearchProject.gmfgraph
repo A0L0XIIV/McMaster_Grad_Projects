@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="ASCII"?>
+<gmfgraph:Canvas xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gmfgraph="http://www.eclipse.org/gmf/2006/GraphicalDefinition" name="ResearchProject">
+  <figures name="Default">
+    <figures xsi:type="gmfgraph:PolylineDecoration" name="PartnerEffortsFigureTargetDecoration"/>
+    <figures xsi:type="gmfgraph:PolylineDecoration" name="EffortFor_WorkpackageFigureTargetDecoration"/>
+    <descriptors name="PartnerFigure">
+      <actualFigure xsi:type="gmfgraph:Rectangle" name="PartnerFigure">
+        <backgroundColor xsi:type="gmfgraph:RGBColor" red="255" green="200" blue="200"/>
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+        <children xsi:type="gmfgraph:Label" name="PartnerLabelFigure" text="Partner"/>
+      </actualFigure>
+      <accessors accessor="getFigurePartnerLabelFigure" figure="//@figures.0/@descriptors.0/@actualFigure/@children.0"/>
+    </descriptors>
+    <descriptors name="EffortFigure">
+      <actualFigure xsi:type="gmfgraph:Ellipse" name="EffortFigure">
+        <backgroundColor xsi:type="gmfgraph:RGBColor" red="200" green="255" blue="200"/>
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+        <children xsi:type="gmfgraph:Label" name="EffortLabelFigure" text="Effort"/>
+      </actualFigure>
+      <accessors accessor="getFigureEffortLabelFigure" figure="//@figures.0/@descriptors.1/@actualFigure/@children.0"/>
+    </descriptors>
+    <descriptors name="WorkpackageFigure">
+      <actualFigure xsi:type="gmfgraph:RoundedRectangle" name="WorkpackageFigure">
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+        <children xsi:type="gmfgraph:Label" name="WorkpackageLabelFigure" text="Workpackage">
+          <maximumSize dx="10000" dy="50"/>
+        </children>
+        <children xsi:type="gmfgraph:Rectangle" name="WorkpackageDeliverablesCompartmentFigure" outline="false"/>
+        <children xsi:type="gmfgraph:Rectangle" name="WorkpackageTasksCompartmentFigure" outline="false"/>
+      </actualFigure>
+      <accessors accessor="getFigureWorkpackageLabelFigure" figure="//@figures.0/@descriptors.2/@actualFigure/@children.0"/>
+      <accessors accessor="getWorkpackageDeliverablesCompartmentFigure" figure="//@figures.0/@descriptors.2/@actualFigure/@children.1"/>
+      <accessors accessor="getWorkpackageTasksCompartmentFigure" figure="//@figures.0/@descriptors.2/@actualFigure/@children.2"/>
+    </descriptors>
+    <descriptors name="TaskFigure">
+      <actualFigure xsi:type="gmfgraph:Rectangle" name="TaskFigure">
+        <backgroundColor xsi:type="gmfgraph:RGBColor" red="200" green="200" blue="255"/>
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+        <children xsi:type="gmfgraph:Label" name="TaskLabelFigure" text="Task"/>
+      </actualFigure>
+      <accessors accessor="getFigureTaskLabelFigure" figure="//@figures.0/@descriptors.3/@actualFigure/@children.0"/>
+    </descriptors>
+    <descriptors name="DeliverableFigure">
+      <actualFigure xsi:type="gmfgraph:Rectangle" name="DeliverableFigure">
+        <backgroundColor xsi:type="gmfgraph:RGBColor" red="255" green="255" blue="200"/>
+        <border xsi:type="gmfgraph:MarginBorder">
+          <insets top="5" left="5" bottom="5" right="5"/>
+        </border>
+        <children xsi:type="gmfgraph:Label" name="DeliverableLabelFigure" text="Deliverable"/>
+      </actualFigure>
+      <accessors accessor="getFigureDeliverableLabelFigure" figure="//@figures.0/@descriptors.4/@actualFigure/@children.0"/>
+    </descriptors>
+    <descriptors name="PartnerEffortsFigure">
+      <actualFigure xsi:type="gmfgraph:PolylineConnection" name="PartnerEffortsFigure" targetDecoration="//@figures.0/@figures.0">
+        <foregroundColor xsi:type="gmfgraph:RGBColor"/>
+      </actualFigure>
+    </descriptors>
+    <descriptors name="PartnerEffortsExternalLabelFigure">
+      <actualFigure xsi:type="gmfgraph:Label" name="PartnerEffortsExternalLabel" text="Person/Months"/>
+    </descriptors>
+    <descriptors name="EffortFor_WorkpackageFigure">
+      <actualFigure xsi:type="gmfgraph:PolylineConnection" name="EffortFor_WorkpackageFigure" targetDecoration="//@figures.0/@figures.1">
+        <foregroundColor xsi:type="gmfgraph:RGBColor"/>
+      </actualFigure>
+    </descriptors>
+    <descriptors name="EffortFor_WorkpackageExternalLabelFigure">
+      <actualFigure xsi:type="gmfgraph:Label" name="EffortFor_WorkpackageExternalLabel" text="for"/>
+    </descriptors>
+  </figures>
+  <nodes name="Partner" figure="PartnerFigure"/>
+  <nodes name="Effort" figure="EffortFigure"/>
+  <nodes name="Workpackage" figure="WorkpackageFigure"/>
+  <nodes name="Task" figure="TaskFigure"/>
+  <nodes name="Deliverable" figure="DeliverableFigure"/>
+  <connections name="PartnerEfforts" figure="PartnerEffortsFigure"/>
+  <connections name="EffortFor_Workpackage" figure="EffortFor_WorkpackageFigure"/>
+  <compartments name="WorkpackageDeliverablesCompartment" figure="WorkpackageFigure" accessor="//@figures.0/@descriptors.2/@accessors.1"/>
+  <compartments name="WorkpackageTasksCompartment" figure="WorkpackageFigure" accessor="//@figures.0/@descriptors.2/@accessors.2"/>
+  <labels name="PartnerLabel" figure="PartnerFigure" accessor="//@figures.0/@descriptors.0/@accessors.0"/>
+  <labels name="EffortLabel" figure="EffortFigure" accessor="//@figures.0/@descriptors.1/@accessors.0"/>
+  <labels name="WorkpackageLabel" figure="WorkpackageFigure" accessor="//@figures.0/@descriptors.2/@accessors.0"/>
+  <labels name="TaskLabel" figure="TaskFigure" accessor="//@figures.0/@descriptors.3/@accessors.0"/>
+  <labels name="DeliverableLabel" figure="DeliverableFigure" accessor="//@figures.0/@descriptors.4/@accessors.0"/>
+  <labels name="PartnerEffortsExternalLabel" figure="PartnerEffortsExternalLabelFigure" elementIcon="false"/>
+  <labels name="EffortFor_WorkpackageExternalLabel" figure="EffortFor_WorkpackageExternalLabelFigure" elementIcon="false"/>
+</gmfgraph:Canvas>

@@ -1,0 +1,284 @@
+import py_entitymatching as em
+import pandas as pd
+import os
+from datetime import datetime
+import warnings
+
+pd.options.display.max_columns = None
+pd.options.display.max_rows = None
+
+# Hide all future/pandas warnings
+warnings.filterwarnings("ignore")
+
+# Script runtime measurement
+startTime = datetime.now()
+
+
+# BlackBox Blocker function
+def match_last_name(ltuple, rtuple):
+    # assume that there is a 'name' attribute in the input tables
+    # and each value in it has two words
+    l_last_name = ltuple['name'].split()[1]
+    r_last_name = rtuple['name'].split()[1]
+    if l_last_name != r_last_name:
+        return True
+    else:
+        return False
+
+# BlackBox Blocker function
+def price_10_percent_comparision(x, y):
+    # get number attributes
+    x_number = int(x['price'])
+    y_number = int(y['price'])
+    # Equal
+    if(x_number == y_number):
+        return False
+    # X is larger and Y is less than 10% smaller
+    elif(x_number > y_number and ((x_number * 0.9) <= y_number)):
+        return False
+    # Y is larger and X is less than 10% smaller
+    elif (y_number > x_number and ((y_number * 0.9) <= x_number)):
+        return False
+    else:
+        return True
+		
+# BlackBox Blocker function
+def km_10_percent_comparision(x, y):
+    # get number attributes
+    x_number = int(x['km_driven'])
+    y_number = int(y['km_driven'])
+    # Equal
+    if(x_number == y_number):
+        return False
+    # X is larger and Y is less than 10% smaller
+    elif(x_number > y_number and ((x_number * 0.9) <= y_number)):
+        return False
+    # Y is larger and X is less than 10% smaller
+    elif (y_number > x_number and ((y_number * 0.9) <= x_number)):
+        return False
+    else:
+        return True
+
+path_A = "B:\McMaster\CAS 764 - Advance Topics in Data Management\Project\Data\\bikes\\bikedekho.csv"
+path_B = "B:\McMaster\CAS 764 - Advance Topics in Data Management\Project\Data\\bikes\\bikewale.csv"
+
+pk_A = "id"
+pk_B = "id"
+
+
+A = em.read_csv_metadata(path_A, key=pk_A)
+B = em.read_csv_metadata(path_B, key=pk_B)
+
+# Name
+ob = em.OverlapBlocker()
+C1 = ob.block_tables(A, B, 'bike_name', 'bike_name', l_output_attrs=['bike_name', 'km_driven', 'price', 'owner_type'], r_output_attrs=['bike_name', 'km_driven', 'price', 'owner_type'], overlap_size=3, show_progress=False)
+len(C1)
+
+
+
+#Equ Others
+ab = em.AttrEquivalenceBlocker()
+
+#Output attributes list
+out_attr = [A.columns[int(INDEX), COLS]
+#out_attr.append(A.columns[int(add_to_attr)])
+
+# Used A, if table columns are different - change
+blocking_col = A.columns[int(INDEX)]
+
+add_missing_val = False
+
+# TABLE BLOCK
+C=ab.block_tables(A, B, blocking_col,blocking_col,l_output_attrs=out_attr,r_output_attrs=out_attr,allow_missing=add_missing_val,n_jobs=-1)
+len(C)
+
+# CANDSET BLOCK
+C= ab.block_candset(C, l_block_attr=blocking_col,r_block_attr=blocking_col,allow_missing=add_missing_val,n_jobs=-1,show_progress=False)
+len(C)
+
+print("\n- Length of candidate set: " + str(len(C)))
+
+# DEBUG
+dbg = em.debug_blocker(C, A, B, output_size=200, n_jobs=-1)
+dbg.head()
+
+# EXAMPLE
+C2 = ab.block_candset(C1, l_block_attr='model_year', r_block_attr='model_year')
+len(C2)
+C3 = ab.block_candset(C2, l_block_attr='city_posted', r_block_attr='city_posted')
+len(C3)
+C4 = ab.block_candset(C3, l_block_attr='color', r_block_attr='color')
+len(C4)
+C5 = ab.block_candset(C4, l_block_attr='fuel_type', r_block_attr='fuel_type')
+len(C5)
+
+
+
+#Overlap blocker
+ob = em.OverlapBlocker()
+
+#Output attributes list
+out_attr = [A.columns[int(INDEX), COLS]
+#out_attr.append(A.columns[int(add_to_attr)])
+
+# Used A, if table columns are different - change
+blocking_col = 'owner_type'
+blocking_col = 'bike_name'
+
+add_missing_val = False
+overlap_size = 2
+
+# WORD AS A TOKEN
+use_world_level = True
+q_gram_value = None
+
+# NOT WORD AS A TOKEN
+q_gram_value = 2
+
+# THE,A, AN
+use_stop_words = False
+
+# TABLES BLOCK
+C = ob.block_tables(A, B, blocking_col,blocking_col,l_output_attrs=out_attr,r_output_attrs=out_attr,l_output_prefix=l_prefix,r_output_prefix=r_prefix,rem_stop_words=use_stop_words,q_val=q_gram_value,word_level=use_world_level,overlap_size=overlap_size,allow_missing=add_missing_val,n_jobs=-1)
+
+# CANDSET BLOCK
+C = ob.block_candset(C, l_overlap_attr=blocking_col,r_overlap_attr=blocking_col,rem_stop_words=use_stop_words,q_val=q_gram_value,word_level=use_world_level,overlap_size=overlap_size,allow_missing=add_missing_val,n_jobs=-1,show_progress=False)
+
+print("\n- Length of candidate set: " + str(len(C)))
+
+# DEBUG
+dbg = em.debug_blocker(C, A, B, output_size=200, n_jobs=-1)
+dbg.head()
+
+
+
+#BlackBox
+bb = em.BlackBoxBlocker()
+bb.set_black_box_function(price_10_percent_comparision)
+bb.set_black_box_function(km_10_percent_comparision)
+C = bb.block_candset(C)
+len(C)
+
+dbg = em.debug_blocker(C, A, B)
+dbg.head()
+
+
+
+
+# Sample  candidate set
+S = em.sample_table(C, 100)
+# Label S
+G = em.label_table(S, 'label')
+
+
+# Split S into development set (I) and evaluation set (J)
+IJ = em.split_train_test(G, train_proportion=0.7, random_state=0)
+I = IJ['train']
+J = IJ['test']
+
+#ltable_pk="ltable_id"
+#rtable_pk="rtable_id"
+ltable_pk = "ltable_" + pk_A
+rtable_pk = "rtable_" + pk_B
+
+
+# Create a set of ML-matchers
+dt = em.DTMatcher(name='DecisionTree', random_state=0)
+svm = em.SVMMatcher(name='SVM', random_state=0)
+rf = em.RFMatcher(name='RF', random_state=0)
+lg = em.LogRegMatcher(name='LogReg', random_state=0)
+ln = em.LinRegMatcher(name='LinReg')
+nb = em.NBMatcher(name='NaiveBayes')
+
+
+# FEATURES
+feature_table = em.get_features_for_matching(A, B, validate_inferred_attr_types=False)
+
+
+# FEATURE TO VECTOR
+H = em.extract_feature_vecs(I, feature_table=feature_table, attrs_after='label', show_progress=False)
+
+# Check if the feature vectors contain missing values
+# A return value of True means that there are missing values
+if(any(pd.notnull(H)):
+        # Impute feature vectors with the mean of the column values.
+        H = em.impute_table(H, exclude_attrs=['_id', ltable_pk, rtable_pk, 'label'], strategy='mean', val_all_nans=0.0)
+	print("- Impute table function used for missing values.")
+
+
+# MATCHER SELECTION
+print("\n- Selecting the best matcher using cross-validation...")
+# Select the best ML matcher using CV
+result = em.select_matcher(matchers=[dt, rf, svm, ln, lg, nb], table=H, exclude_attrs=['_id', ltable_pk, rtable_pk, 'label'], k=5, target_attr='label', metric_to_select_matcher='f1', random_state=0)
+result['cv_stats']
+
+
+#DEBUGGING THE MATCHER
+#  Split feature vectors into train and test
+UV = em.split_train_test(H, train_proportion=0.5)
+U = UV['train']
+V = UV['test']
+
+# Debug decision tree using GUI
+em.vis_debug_rf(rf, U, V,
+		exclude_attrs=['_id', ltable_pk, rtable_pk, 'label'],
+		target_attr='label')
+		
+em.vis_debug_dt(dt, U, V,
+		exclude_attrs=['_id', ltable_pk, rtable_pk, 'label'],
+		target_attr='label')
+
+
+#EVALUATING THE MATCHING OUTPUT
+print("\n- Converting the evaluation set to feature vectors...")
+# Convert J into a set of feature vectors using feature table
+L = em.extract_feature_vecs(J, feature_table=feature_table, attrs_after='label', show_progress=False)
+
+# Check if the feature vectors contain missing values
+# A return value of True means that there are missing values
+if(any(pd.notnull(L)):
+        # Impute feature vectors with the mean of the column values.
+        L = em.impute_table(L, exclude_attrs=['_id', ltable_pk, rtable_pk, 'label'], strategy='mean', val_all_nans=0.0)
+	print("- Impute table function used for missing values.")
+
+
+#TRAINING SELECTED MATCHER
+print("\n- Training the selected matcher...")
+rf.fit(table=H, exclude_attrs=['_id', ltable_pk, rtable_pk, 'label'], target_attr='label')
+
+dt.fit(table=H, exclude_attrs=['_id', ltable_pk, rtable_pk, 'label'], target_attr='label')
+
+svm.fit(table=H, exclude_attrs=['_id', ltable_pk, rtable_pk, 'label'], target_attr='label')
+
+lg.fit(table=H, exclude_attrs=['_id', ltable_pk, rtable_pk, 'label'], target_attr='label')
+
+ln.fit(table=H, exclude_attrs=['_id', ltable_pk, rtable_pk, 'label'], target_attr='label')
+
+nb.fit(table=H, exclude_attrs=['_id', ltable_pk, rtable_pk, 'label'], target_attr='label')
+
+
+#Predicting the matches
+print("\n- Predicting the matches...")
+predictions = rf.predict(table=L, exclude_attrs=['_id', ltable_pk, rtable_pk, 'label'], append=True, target_attr='predicted', inplace=False)
+
+predictions = dt.predict(table=L, exclude_attrs=['_id', ltable_pk, rtable_pk, 'label'], append=True, target_attr='predicted', inplace=False)
+
+predictions = svm.predict(table=L, exclude_attrs=['_id', ltable_pk, rtable_pk, 'label'], append=True, target_attr='predicted', inplace=False)
+
+predictions = lg.predict(table=L, exclude_attrs=['_id', ltable_pk, rtable_pk, 'label'], append=True, target_attr='predicted', inplace=False)
+
+predictions = ln.predict(table=L, exclude_attrs=['_id', ltable_pk, rtable_pk, 'label'], append=True, target_attr='predicted', inplace=False)
+
+predictions = nb.predict(table=L, exclude_attrs=['_id', ltable_pk, rtable_pk, 'label'], append=True, target_attr='predicted', inplace=False)
+
+#Evaluating the prediction
+print("\n- Evaluating the prediction...")
+# Evaluate the predictions
+eval_result = em.eval_matches(predictions, 'label', 'predicted')
+em.print_eval_summary(eval_result)
+
+
+print("\n- Time elapsed:")
+print(datetime.now() - startTime)
+
+print("\n-------------END-------------\n")

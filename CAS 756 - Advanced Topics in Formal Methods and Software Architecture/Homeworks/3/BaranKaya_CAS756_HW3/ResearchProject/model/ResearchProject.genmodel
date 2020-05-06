@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="" modelDirectory="/ResearchProject/src" modelPluginID="ResearchProject"
+    modelName="ResearchProject" importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0"
+    copyrightFields="false">
+  <foreignModel>ResearchProject.emf</foreignModel>
+  <genPackages prefix="ResearchProject" disposableProviderFactory="true" ecorePackage="ResearchProject.ecore#/">
+    <genClasses image="false" ecoreClass="ResearchProject.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ResearchProject.ecore#//NamedElement/name"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="ResearchProject.ecore#//TimedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ResearchProject.ecore#//TimedElement/start"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ResearchProject.ecore#//TimedElement/end"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ResearchProject.ecore#//TimedElement/duration"/>
+    </genClasses>
+    <genClasses ecoreClass="ResearchProject.ecore#//Project">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ResearchProject.ecore#//Project/partners"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ResearchProject.ecore#//Project/workpackages"/>
+    </genClasses>
+    <genClasses ecoreClass="ResearchProject.ecore#//Partner">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ResearchProject.ecore#//Partner/efforts"/>
+    </genClasses>
+    <genClasses ecoreClass="ResearchProject.ecore#//Effort">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ResearchProject.ecore#//Effort/PersonMonths"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ResearchProject.ecore#//Effort/for_Workpackage"/>
+    </genClasses>
+    <genClasses ecoreClass="ResearchProject.ecore#//Workpackage">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ResearchProject.ecore#//Workpackage/packageEffort"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ResearchProject.ecore#//Workpackage/deliverables"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ResearchProject.ecore#//Workpackage/tasks"/>
+    </genClasses>
+    <genClasses ecoreClass="ResearchProject.ecore#//Task"/>
+    <genClasses ecoreClass="ResearchProject.ecore#//Deliverable"/>
+  </genPackages>
+</genmodel:GenModel>

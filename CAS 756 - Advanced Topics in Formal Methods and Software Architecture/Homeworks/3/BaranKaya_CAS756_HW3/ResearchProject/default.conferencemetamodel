@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Conference xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="ConferenceMetamodel">
+  <timeslots>
+    <timedBreaks type="break 1" breakLocation="//@rooms.0"/>
+  </timeslots>
+  <timeslots>
+    <timedTracks name="track 1" trackLocation="//@rooms.0">
+      <talks name="talk 1" presents="//@speakers.0"/>
+    </timedTracks>
+  </timeslots>
+  <rooms name="Room 1" breakRoom="//@timeslots.0/@timedBreaks.0" trackRoom="//@timeslots.1/@timedTracks.0"/>
+  <speakers name="Baran"/>
+</Conference>

@@ -1,0 +1,31 @@
+-- Find the compartment figure
+var workpackageDeliverablesComponentFigure = GmfGraph!Rectangle.all.
+    selectOne(r|r.name = 'WorkpackageDeliverablesComponentFigure');
+    
+var workpackageTasksComponentFigure = GmfGraph!Rectangle.all.
+    selectOne(r|r.name = 'WorkpackageTasksComponentFigure');
+
+-- ... and add a stack layout to it
+workpackageDeliverablesComponentFigure.layout = new GmfGraph!StackLayout;
+workpackageTasksComponentFigure.layout = new GmfGraph!StackLayout;
+
+-- Find the attribute figure
+var deliverableFigure = GmfGraph!Rectangle.all.
+    selectOne(r|r.name = 'DeliverableFigure');
+var taskFigure = GmfGraph!Rectangle.all.
+    selectOne(r|r.name = 'TaskFigure');
+
+-- ... delete its border
+delete deliverableFigure.border;
+delete taskFigure.border;
+
+-- ... set its outline to false
+deliverableFigure.outline = false;
+taskFigure.outline = false;
+
+-- ... and add a preferred size to it
+var preferredSize = new GmfGraph!Dimension;
+preferredSize.dx = 100;
+preferredSize.dy = 16;
+deliverableFigure.preferredSize = preferredSize;
+taskFigure.preferredSize = preferredSize;

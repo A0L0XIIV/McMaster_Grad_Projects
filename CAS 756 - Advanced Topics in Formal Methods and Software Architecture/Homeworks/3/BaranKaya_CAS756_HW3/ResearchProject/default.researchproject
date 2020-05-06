@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="ResearchProject">
+  <partners name="TOG">
+    <efforts PersonMonths="6" for_Workpackage="//@workpackages.0"/>
+  </partners>
+  <partners name="YORK">
+    <efforts PersonMonths="6" for_Workpackage="//@workpackages.0"/>
+  </partners>
+  <workpackages name="WP1: Requirements and Use Cases" start="1" end="6" duration="6" packageEffort="//@partners.0/@efforts.0 //@partners.1/@efforts.0">
+    <deliverables name="D1.1: Project Requirements"/>
+    <deliverables name="D1.2: Evaluation Plan"/>
+    <tasks name="T1.1" start="1" end="6" duration="6"/>
+    <tasks name="T1.2" start="3" end="6" duration="4"/>
+    <tasks name="T1.3" start="4" end="6" duration="3"/>
+  </workpackages>
+  <workpackages name="WP2: Domain Modeling and OSS Project Lifecycle..." start="1" end="24" duration="24">
+    <deliverables name="D2.1: Evaluation Plan"/>
+    <tasks name="T2.1" start="1" end="6" duration="6"/>
+    <tasks name="T2.2" start="7" end="12" duration="6"/>
+    <tasks name="T2.3" start="13" end="18" duration="6"/>
+    <tasks name="T2.4" start="24" end="19" duration="6"/>
+  </workpackages>
+  <workpackages name="WP3: Source Code Quality and Activity Analysis" start="1" end="24" duration="24">
+    <tasks name="T3.1" start="1" end="3" duration="3"/>
+    <tasks name="T3.2"/>
+  </workpackages>
+  <workpackages name="WP4">
+    <deliverables name="D4.1: Data Collected for Thread Analysis"/>
+    <deliverables name="D4.2: Questions/Answers Extraction System from Oni..."/>
+    <deliverables name="D4.3: Training Data Annotations"/>
+  </workpackages>
+</Project>
